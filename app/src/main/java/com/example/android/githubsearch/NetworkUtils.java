@@ -6,21 +6,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-public class NetworkUtils {
-    public static String doHTTPGet(URL url) throws IOException {
-        HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
-        try {
-            InputStream inputStream = urlConnection.getInputStream();
-            Scanner scanner = new Scanner(inputStream);
-            scanner.useDelimiter("\\A");
-            if (scanner.hasNext()) {
-                return scanner.next();
-            } else {
-                return null;
-            }
-        } finally {
-            urlConnection.disconnect();
-        }
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
+public class NetworkUtils {
+
+    private static final OkHttpClient mHTTPClient = new OkHttpClient();
+
+    public static String doHTTPGet(String url) throws IOException {
+        Request req = new Request.Builder().url(url).build();
+        Response res = mHTTPClient.newCall(req).execute();
+        try {
+            return res.body().string();
+        } finally {
+            res.close();
+        }
     }
 }

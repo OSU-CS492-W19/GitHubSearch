@@ -13,17 +13,17 @@ import java.util.ArrayList;
  */
 
 public class GitHubSearchAdapter extends RecyclerView.Adapter<GitHubSearchAdapter.SearchResultViewHolder> {
-    private ArrayList<String> mSearchResultsList;
+    private GitHubUtils.GitHubRepo[] mRepos;
 
-    public void updateSearchResults(ArrayList<String> searchResultsList) {
-        mSearchResultsList = searchResultsList;
+    public void updateSearchResults(GitHubUtils.GitHubRepo[] repos) {
+        mRepos = repos;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        if (mSearchResultsList != null) {
-            return mSearchResultsList.size();
+        if (mRepos != null) {
+            return mRepos.length;
         } else {
             return 0;
         }
@@ -38,7 +38,7 @@ public class GitHubSearchAdapter extends RecyclerView.Adapter<GitHubSearchAdapte
 
     @Override
     public void onBindViewHolder(SearchResultViewHolder holder, int position) {
-        holder.bind(mSearchResultsList.get(position));
+        holder.bind(mRepos[position].full_name);
     }
 
     class SearchResultViewHolder extends RecyclerView.ViewHolder {
