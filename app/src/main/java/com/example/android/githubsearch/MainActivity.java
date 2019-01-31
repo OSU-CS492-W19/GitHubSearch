@@ -14,10 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mSearchBoxET = (EditText)findViewById(R.id.et_search_box);
-        mSearchResultsRV = (RecyclerView)findViewById(R.id.rv_search_results);
+        mSearchBoxET = findViewById(R.id.et_search_box);
+        mSearchResultsRV = findViewById(R.id.rv_search_results);
         mLoadingErrorTV = findViewById(R.id.tv_loading_error);
         mLoadingPB = findViewById(R.id.pb_loading);
 
@@ -45,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         mGitHubSearchAdapter = new GitHubSearchAdapter();
         mSearchResultsRV.setAdapter(mGitHubSearchAdapter);
 
-        Button searchButton = (Button)findViewById(R.id.btn_search);
+        Button searchButton = findViewById(R.id.btn_search);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

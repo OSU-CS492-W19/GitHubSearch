@@ -4,14 +4,11 @@ import android.net.Uri;
 
 import com.google.gson.Gson;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 public class GitHubUtils {
-    final static String GITHUB_SEARCH_BASE_URL = "https://api.github.com/search/repositories";
-    final static String GITHUB_SEARCH_QUERY_PARAM = "q";
-    final static String GITHUB_SEARCH_SORT_PARAM = "sort";
-    final static String GITHUB_SEARCH_SORT_VALUE = "stars";
+    private final static String GITHUB_SEARCH_BASE_URL = "https://api.github.com/search/repositories";
+    private final static String GITHUB_SEARCH_QUERY_PARAM = "q";
+    private final static String GITHUB_SEARCH_SORT_PARAM = "sort";
+    private final static String GITHUB_SEARCH_SORT_VALUE = "stars";
 
     public static class GitHubRepo {
         public String full_name;
