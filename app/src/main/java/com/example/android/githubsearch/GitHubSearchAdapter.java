@@ -34,7 +34,7 @@ public class GitHubSearchAdapter extends RecyclerView.Adapter<GitHubSearchAdapte
 
     @Override
     public void onBindViewHolder(@NonNull SearchResultViewHolder holder, int position) {
-        holder.bind(mRepos[position].full_name);
+        holder.bind(mRepos[position]);
     }
 
     class SearchResultViewHolder extends RecyclerView.ViewHolder {
@@ -45,8 +45,8 @@ public class GitHubSearchAdapter extends RecyclerView.Adapter<GitHubSearchAdapte
             mSearchResultTV = (TextView)itemView.findViewById(R.id.tv_search_result);
         }
 
-        public void bind(String searchResult) {
-            mSearchResultTV.setText(searchResult);
+        public void bind(GitHubUtils.GitHubRepo repo) {
+            mSearchResultTV.setText(repo.full_name);
         }
     }
 }
